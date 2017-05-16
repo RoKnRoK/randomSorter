@@ -1,13 +1,22 @@
 (function(){
-  angular.module('RandomSorter', ['ngAnimate'])
-  .constant('serviceUrl', 'http://localhost:8080/RandomSorter/sort')
-  .controller('SortController', function($scope, $http, serviceUrl){
+  angular.module('RandomSorter', [])
+  .controller('SortController', ['$scope', 'SortResultService', function($scope, SortResultService){
 
     $scope.clear = function(){
           $scope.sort = { array: null, result: null};
         };
+         function fetchAllSortResults(){
+            SortResultService.fetchAllSortResults().then(
+                function(result) {
+                    console.log(result);
+                    $scope.sort.result = result;
+                }
+            );
+          }
     $scope.onSort = function(){
-        successCallback = function(result){
+        SortResultService.addSortResult($scope.sort.array)
+        .then(fetchAllSortResults);
+       /* successCallback = function(result){
             console.log(result);
             $scope.sort.result = result.data;
         };
@@ -20,9 +29,9 @@
         successCallback,
         function(errResponse){
             console.error('Error while updating User');
-        });
+        });*/
     }
 
-  })
+  }])
 
 })()

@@ -1,18 +1,40 @@
 package com.rok.sorter.model;
 
+import javax.persistence.*;
+
 /**
  * Created by roman.kulikov on 5/16/2017.
  * All rights reserved =D
  */
+@Entity
 public class SortResult {
-    private String sortedArray;
-    private int changesOfPositionsCount;
-    private long millisecondsEstimated;
 
-    public SortResult(String sortedArray, int changesOfPositionsCount, long millisecondsEstimated) {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column
+    private int id;
+    @Column
+    private String sortedArray;
+    @Column
+    private int changesOfPositionsCount;
+    @Column
+    private long nanosecondsEstimated;
+
+    public SortResult() {
+    }
+
+    public SortResult(String sortedArray, int changesOfPositionsCount, long nanosecondsEstimated) {
         this.sortedArray = sortedArray;
         this.changesOfPositionsCount = changesOfPositionsCount;
-        this.millisecondsEstimated = millisecondsEstimated;
+        this.nanosecondsEstimated = nanosecondsEstimated;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSortedArray() {
@@ -31,11 +53,11 @@ public class SortResult {
         this.changesOfPositionsCount = changesOfPositionsCount;
     }
 
-    public long getMillisecondsEstimated() {
-        return millisecondsEstimated;
+    public long getNanosecondsEstimated() {
+        return nanosecondsEstimated;
     }
 
-    public void setMillisecondsEstimated(long millisecondsEstimated) {
-        this.millisecondsEstimated = millisecondsEstimated;
+    public void setNanosecondsEstimated(long nanosecondsEstimated) {
+        this.nanosecondsEstimated = nanosecondsEstimated;
     }
 }
