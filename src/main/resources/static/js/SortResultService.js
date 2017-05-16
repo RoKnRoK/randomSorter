@@ -12,46 +12,36 @@
 
         function fetchAllSortResults() {
             var deferred = $q.defer();
-                $http.get(serviceUrl+'fetchAll')
-                    .then(
-                    function (response) {
-                        deferred.resolve(response.data);
-                    },
-                    function(errResponse){
-                        console.error('Error while fetching all sort results');
-                        deferred.reject(errResponse);
-                    }
-                );
-                return deferred.promise;
+            $http.get(serviceUrl+'fetchAll')
+                .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    console.error('Error while fetching all sort results');
+                    deferred.reject(errResponse);
+                }
+            );
+            return deferred.promise;
 
         }
 
         function addSortResult(array) {
         var deferred = $q.defer();
-                        $http({
-                                            url: serviceUrl+'create',
-                                            method: "POST",
-                                            params: {"array": array }
-                                        }).then(
-                            function (response) {
-                                deferred.resolve(response.data);
-                            },
-                            function(errResponse){
-                                console.error('Error while fetching all sort results');
-                                deferred.reject(errResponse);
-                            }
-                        );
-                        return deferred.promise;
-               /* $http({
-                    url: serviceUrl+'create',
-                    method: "POST",
-                    params: {"array": array }
-                }).then(
-                    fetchAllSortResults,
-                    function(errResponse){
-                        console.error('Error while updating User');
-                });*/
+        $http(
+            {   url: serviceUrl+'create',
+                method: "POST",
+                params: {"array": array }
+            }).then(
+            function (response) {
+                deferred.resolve(response.data);
+            },
+            function(errResponse){
+                console.error('Error while fetching all sort results');
+                deferred.reject(errResponse);
+            }
+        );
+        return deferred.promise;
         }
-
     })
 })()

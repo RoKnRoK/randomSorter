@@ -1,11 +1,11 @@
 package com.rok.sorter.controller;
 
-import com.rok.sorter.logic.RandomSorter;
 import com.rok.sorter.model.SortResult;
 import com.rok.sorter.service.SortResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -19,12 +19,23 @@ import java.util.List;
 public class RandomSortController {
 
     @Autowired
+    private
     SortResultService sortResultService;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public SortResult sort(@RequestParam(name="array") Double[] numbers) {
-        return sortResultService.createSortResult(numbers);
+        Double[] numbersWithoutNulls = new Double[numbers.length];
+        int j=0;
+        for (Double number : numbers) {
+            if (number == null) {
+                continue;
+            }
+            numbersWithoutNulls[j] = number;
+            j++;
+        }
+        numbersWithoutNulls = Arrays.copyOfRange(numbersWithoutNulls, 0, j);
+        return sortResultService.createSortResult(numbersWithoutNulls);
     }
 
     @RequestMapping(value = "/fetchAll", method = RequestMethod.GET)

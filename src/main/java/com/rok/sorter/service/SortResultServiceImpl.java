@@ -1,8 +1,8 @@
 package com.rok.sorter.service;
 
-/**
- * Created by roman.kulikov on 5/16/2017.
- * All rights reserved =D
+/*
+  Created by roman.kulikov on 5/16/2017.
+  All rights reserved =D
  */
 
 import java.util.List;

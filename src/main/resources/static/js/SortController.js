@@ -2,34 +2,25 @@
   angular.module('RandomSorter', [])
   .controller('SortController', ['$scope', 'SortResultService', function($scope, SortResultService){
 
-    $scope.clear = function(){
-          $scope.sort = { array: null, result: null};
-        };
-         function fetchAllSortResults(){
-            SortResultService.fetchAllSortResults().then(
-                function(result) {
-                    console.log(result);
-                    $scope.sort.result = result;
-                }
-            );
-          }
+    $scope.sort = {'array' : null, 'result' : null}
+    console.log('Gonna fetch them all');
+    fetchAllSortResults();
+
     $scope.onSort = function(){
         SortResultService.addSortResult($scope.sort.array)
         .then(fetchAllSortResults);
-       /* successCallback = function(result){
-            console.log(result);
-            $scope.sort.result = result.data;
-        };
+    }
+    $scope.clear = function(){
+      $scope.sort.array = null;
+    };
 
-        $http({
-            url: serviceUrl,
-            method: "POST",
-            params: {"array": $scope.sort.array}
-        }).then(
-        successCallback,
-        function(errResponse){
-            console.error('Error while updating User');
-        });*/
+    function fetchAllSortResults(){
+    SortResultService.fetchAllSortResults().then(
+        function(result) {
+            console.log(result);
+            $scope.sort.result = result;
+        }
+    );
     }
 
   }])

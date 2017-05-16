@@ -6,6 +6,7 @@ import javax.persistence.*;
  * Created by roman.kulikov on 5/16/2017.
  * All rights reserved =D
  */
+@SuppressWarnings("unused")
 @Entity
 public class SortResult {
 
