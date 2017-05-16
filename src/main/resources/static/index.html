@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Sorter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-animate.js"></script>
+
+    <script src="/RandomSorter/js/SortController.js"></script>
+</head>
+<body>
+<!--<div class="page-header text-center">
+    <h1>
+    <span style="margin-right: 50px">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png" width="150"></img>
+    </span>
+        Let's browse some
+        <nobr><a href=""><i class="fa fa-wikipedia-w" style="font-size: 50px; color: #133924;"></i></a>iki</nobr>
+        articles!
+    </h1>
+</div>-->
+<div class="container-fluid main" ng-app="RandomSorter" ng-controller="SortController">
+    <form name="myForm" ng-submit="onSort()">
+        <label>Please enter the array of numbers:
+            <nobr><input type="text" name="input" ng-model="sort.array"></input><span class="clear" ng-click="clear()">X </span>
+            </nobr>
+            <!--<span class="error" ng-show="search.invalid">&ndash;&gt;
+              <img src="http://www.clker.com/cliparts/E/C/p/S/0/F/exclamation-mark-red-md.png" title="This field is required" height="25vh"></img>
+            </span>-->
+        </label>
+    </form>
+    {{sort.result}}
+
+    <!--<ul ng-show="search.results" >
+        <li  class="searchResult" ng-repeat="searchResult in search.results">
+            <a  ng-href="{{searchResult.link}}" target="{{searchResult.target}}" >
+                <h3>{{searchResult.title}}</h3>
+                {{searchResult.extract}}
+            </a>
+        </li>
+    </ul>
+    <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
+        <div id="feeling-lucky" class="container-fluid" ng-hide="search.results" title="Luck is my second name">
+            <img src="https://s13.postimg.org/5ib7ak0pj/jetel3_2.png" height="100%" style="padding:20px"></img>
+        </div>
+    </a>-->
+</div>
+
+</body>
+</html>

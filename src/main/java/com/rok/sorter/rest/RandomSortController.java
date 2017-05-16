@@ -15,9 +15,9 @@ import java.util.*;
 @RestController
 public class RandomSortController {
 
-    @RequestMapping(value = "/eval/{numbers}", method = RequestMethod.GET)
+    @RequestMapping(value = "/eval", method = RequestMethod.POST)
     @ResponseBody
-    public SortResult eval(@PathVariable Double[] numbers) {
+    public SortResult eval(@RequestParam(name="array") Double[] numbers) {
 
         RandomSorter sorter = new RandomSorter(numbers);
         return sorter.sort();

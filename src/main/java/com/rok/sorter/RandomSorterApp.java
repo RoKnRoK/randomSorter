@@ -19,7 +19,7 @@ public class RandomSorterApp {
     }
 
 
-    @Bean
+    /*@Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
 
@@ -32,5 +32,5 @@ public class RandomSorterApp {
             }
 
         };
-    }
+    }*/
 }
