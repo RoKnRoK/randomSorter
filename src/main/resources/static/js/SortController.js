@@ -1,6 +1,6 @@
 (function(){
   angular.module('RandomSorter', ['ngAnimate'])
-  .constant('serviceUrl', 'http://localhost:8080/RandomSorter/eval')
+  .constant('serviceUrl', 'http://localhost:8080/RandomSorter/sort')
   .controller('SortController', function($scope, $http, serviceUrl){
 
     $scope.clear = function(){
