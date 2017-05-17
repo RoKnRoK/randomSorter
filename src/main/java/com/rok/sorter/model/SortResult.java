@@ -19,15 +19,15 @@ public class SortResult {
     @Column
     private int changesOfPositionsCount;
     @Column
-    private long nanosecondsEstimated;
+    private String timeEstimated;
 
     public SortResult() {
     }
 
-    public SortResult(String sortedArray, int changesOfPositionsCount, long nanosecondsEstimated) {
+    public SortResult(String sortedArray, int changesOfPositionsCount, String timeEstimated) {
         this.sortedArray = sortedArray;
         this.changesOfPositionsCount = changesOfPositionsCount;
-        this.nanosecondsEstimated = nanosecondsEstimated;
+        this.timeEstimated = timeEstimated;
     }
 
     public int getId() {
@@ -54,11 +54,11 @@ public class SortResult {
         this.changesOfPositionsCount = changesOfPositionsCount;
     }
 
-    public long getNanosecondsEstimated() {
-        return nanosecondsEstimated;
+    public String getTimeEstimated() {
+        return timeEstimated;
     }
 
-    public void setNanosecondsEstimated(long nanosecondsEstimated) {
-        this.nanosecondsEstimated = nanosecondsEstimated;
+    public void setTimeEstimated(String timeEstimated) {
+        this.timeEstimated = timeEstimated;
     }
 }

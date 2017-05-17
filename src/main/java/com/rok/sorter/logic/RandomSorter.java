@@ -39,7 +39,7 @@ public class RandomSorter {
 
         int firstIndex, secondIndex;
         double firstNumber, secondNumber;
-        long timeEstimated = System.nanoTime();
+        long timeEstimatedNs = System.nanoTime();
         int changesOfPositionsCount = 0;
         Random random = new Random();
         while (!arrayIsSorted()) {
@@ -61,9 +61,26 @@ public class RandomSorter {
                 changesOfPositionsCount++;
             }
         }
-        timeEstimated = System.nanoTime() - timeEstimated;
+        timeEstimatedNs = System.nanoTime() - timeEstimatedNs;
 
+        String timeEstimated = adjustTime(timeEstimatedNs);
         return new SortResult(Arrays.toString(numbersAsArray), changesOfPositionsCount, timeEstimated);
+    }
+
+    private String adjustTime(long timeEstimatedNs) {
+        if (timeEstimatedNs < 1000000) {
+            return timeEstimatedNs + " ns";
+        }
+        if (timeEstimatedNs >= 1000000 && timeEstimatedNs < 1000000000) {
+            return timeEstimatedNs/1000000 + " ms";
+        }
+        if (timeEstimatedNs >= 1000000000 && timeEstimatedNs < 60000000000L) {
+            return timeEstimatedNs/1000000000 + " s";
+        }
+        if (timeEstimatedNs >= 60000000000L && timeEstimatedNs < 3600000000000L) {
+            return timeEstimatedNs/60000000000L + " min";
+        }
+        return timeEstimatedNs/3600000000000L + " hours";
     }
 
     private boolean arrayIsSorted() {

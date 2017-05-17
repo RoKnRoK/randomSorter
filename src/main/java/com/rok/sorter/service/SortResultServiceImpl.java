@@ -23,6 +23,10 @@ public class SortResultServiceImpl implements SortResultService {
         return sortResultDao.fetchAllSortResults();
     }
 
+    public void clearAllSortResults() {
+        sortResultDao.clearAllSortResults();
+    }
+
     public SortResult createSortResult(Double[] numbers) {
         RandomSorter sorter = new RandomSorter(numbers);
         SortResult sortResult = sorter.sort();

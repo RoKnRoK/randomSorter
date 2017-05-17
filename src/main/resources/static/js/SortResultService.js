@@ -5,7 +5,8 @@
 
         var factory = {
             fetchAllSortResults: fetchAllSortResults,
-            addSortResult: addSortResult
+            addSortResult: addSortResult,
+            clearAllResults : clearAllResults
         };
 
         return factory;
@@ -26,12 +27,31 @@
 
         }
 
+        function clearAllResults() {
+            var deferred = $q.defer();
+            $http.delete(serviceUrl+'clearAll')
+                .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    console.error('Error while removing all sort results');
+                    deferred.reject(errResponse);
+                }
+            );
+            return deferred.promise;
+
+        }
+
         function addSortResult(array) {
         var deferred = $q.defer();
         $http(
             {   url: serviceUrl+'create',
-                method: "POST",
-                params: {"array": array }
+                method: 'POST',
+                data: '['+array +']',
+                /*headers: {
+                    'Content-Type' : 'text/plain'
+                }*/
             }).then(
             function (response) {
                 deferred.resolve(response.data);

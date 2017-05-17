@@ -24,7 +24,7 @@ public class RandomSortController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public SortResult sort(@RequestParam(name="array") Double[] numbers) {
+    public SortResult sort(@RequestBody Double[] numbers) {
         Double[] numbersWithoutNulls = new Double[numbers.length];
         int j=0;
         for (Double number : numbers) {
@@ -44,4 +44,9 @@ public class RandomSortController {
         return sortResultService.fetchAllSortResults();
     }
 
+    @RequestMapping(value = "/clearAll", method = RequestMethod.DELETE)
+    @ResponseBody
+    public void clearAll() {
+        sortResultService.clearAllSortResults();
+    }
 }

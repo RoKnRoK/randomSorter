@@ -11,6 +11,7 @@ import java.util.List;
 public interface SortResultService {
 
     List<SortResult> fetchAllSortResults();
+    void clearAllSortResults();
 
     SortResult createSortResult(Double[] array);
 }

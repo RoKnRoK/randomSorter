@@ -13,6 +13,12 @@
     $scope.clear = function(){
       $scope.sort.array = null;
     };
+    $scope.clearAllResults = function(){
+        if (confirm("This action cannot be undone! Are you sure you want to proceed?")){
+            SortResultService.clearAllResults()
+            .then(fetchAllSortResults);
+        }
+    }
 
     function fetchAllSortResults(){
     SortResultService.fetchAllSortResults().then(

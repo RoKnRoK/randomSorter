@@ -11,6 +11,7 @@ import java.util.List;
 public interface SortResultDao {
 
     List<SortResult> fetchAllSortResults();
+    void clearAllSortResults();
 
     void addSortResult(SortResult sortResult);
 }

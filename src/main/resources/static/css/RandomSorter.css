@@ -23,7 +23,10 @@ body, .form-control{
 }
 
 .tablecontainer{
-	padding-left: 20px;
+	padding-bottom: 3px;
+}
+.tablecontainer .table {
+    margin-bottom: 0px;
 }
 
 .generic-container {

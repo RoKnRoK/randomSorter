@@ -27,6 +27,11 @@ public class SortResultDaoImpl implements SortResultDao {
     }
 
     @Override
+    public void clearAllSortResults() {
+        entityManager.createQuery("DELETE FROM SortResult").executeUpdate();
+    }
+
+    @Override
     public void addSortResult(SortResult sortResult) {
         entityManager.persist(sortResult);
     }

@@ -21,8 +21,8 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="array">Enter an array:</label>
-                        <div class="col-md-7">
-                            <input type="text" ng-model="sort.array" ng-pattern="/^(-?(\d+\.?\d*),)*(-?(\d+\.?\d*),?)$/" id="array" name="array" class="form-control input-sm" placeholder="Enter array of numbers" required />
+                        <div class="col-md-10">
+                            <input type="text" ng-model="sort.array" ng-pattern="/^(-?(\d+\.?\d*),)*(-?(\d+\.?\d*))$/" id="array" name="array" class="form-control input-sm" placeholder="Enter array of numbers" required />
                             <div class="has-error" ng-show="myForm.$dirty">
                                 <span ng-show="myForm.array.$error.pattern">Please enter an array of doubles, separated by comma. Integer part must present!</span>
                                 <span ng-show="myForm.array.$error.required">This is a required field</span>
@@ -50,7 +50,7 @@
                     <th>ID</th>
                     <th>Sorted array</th>
                     <th>Amount of position changes</th>
-                    <th>Time estimated, ns</th>
+                    <th>Time estimated</th>
                     <!--<th width="20%"></th>-->
                 </tr>
                 </thead>
@@ -59,13 +59,18 @@
                     <td><span ng-bind="sr.id"></span></td>
                     <td><span ng-bind="sr.sortedArray"></span></td>
                     <td><span ng-bind="sr.changesOfPositionsCount"></span></td>
-                    <td><span ng-bind="sr.nanosecondsEstimated"></span></td>
+                    <td><span ng-bind="sr.timeEstimated"></span></td>
                    <!-- <td>
                         <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
                     </td>-->
                 </tr>
                 </tbody>
             </table>
+            <div class="row">
+                <div class="floatRight">
+                    <button type="button" ng-click="clearAllResults()" class="btn btn-warning btn-sm" ng-disabled="!sort.result.length">Clear results</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
