@@ -48,10 +48,7 @@
         $http(
             {   url: serviceUrl+'create',
                 method: 'POST',
-                data: '['+array +']',
-                /*headers: {
-                    'Content-Type' : 'text/plain'
-                }*/
+                data: '['+ array +']'
             }).then(
             function (response) {
                 deferred.resolve(response.data);
