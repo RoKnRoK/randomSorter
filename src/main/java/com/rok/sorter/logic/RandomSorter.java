@@ -2,10 +2,7 @@ package com.rok.sorter.logic;
 
 import com.rok.sorter.model.SortResult;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by roman.kulikov on 5/16/2017.
@@ -18,8 +15,10 @@ public class RandomSorter {
     private double max;
 
     public RandomSorter(Double[] numbersAsArray) {
-        this.numbersAsArray = numbersAsArray;
-        this.length = numbersAsArray.length;
+        this.numbersAsArray = Arrays.stream(numbersAsArray)
+                .filter(Objects::nonNull)
+                .toArray(Double[]::new);
+        this.length = this.numbersAsArray.length;
     }
 
     public SortResult sort(){

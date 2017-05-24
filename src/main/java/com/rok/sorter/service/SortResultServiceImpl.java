@@ -5,13 +5,13 @@ package com.rok.sorter.service;
   All rights reserved =D
  */
 
-import java.util.List;
-
 import com.rok.sorter.dao.SortResultDao;
 import com.rok.sorter.logic.RandomSorter;
 import com.rok.sorter.model.SortResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service("sortInfoService")
 public class SortResultServiceImpl implements SortResultService {

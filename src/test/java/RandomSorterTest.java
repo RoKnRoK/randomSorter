@@ -19,4 +19,15 @@ public class RandomSorterTest {
 
         Assert.assertEquals("[-4.0, -0.9, 1.0, 9.0, 15.0, 156.0]", sortedArray);
     }
+
+    @Test
+    public void testArrayWithNulls(){
+        Double[] numbers = new Double[]{9., 15., null, 156., -4., -0.9, 1., null};
+        RandomSorter sorter = new RandomSorter(numbers);
+
+        SortResult sort = sorter.sort();
+        String sortedArray = sort.getSortedArray();
+
+        Assert.assertEquals("[-4.0, -0.9, 1.0, 9.0, 15.0, 156.0]", sortedArray);
+    }
 }

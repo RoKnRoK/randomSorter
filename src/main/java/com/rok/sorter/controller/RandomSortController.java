@@ -25,17 +25,7 @@ public class RandomSortController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public SortResult sort(@RequestBody Double[] numbers) {
-        Double[] numbersWithoutNulls = new Double[numbers.length];
-        int j=0;
-        for (Double number : numbers) {
-            if (number == null) {
-                continue;
-            }
-            numbersWithoutNulls[j] = number;
-            j++;
-        }
-        numbersWithoutNulls = Arrays.copyOfRange(numbersWithoutNulls, 0, j);
-        return sortResultService.createSortResult(numbersWithoutNulls);
+        return sortResultService.createSortResult(numbers);
     }
 
     @RequestMapping(value = "/fetchAll", method = RequestMethod.GET)
